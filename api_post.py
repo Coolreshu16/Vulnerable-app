@@ -4,7 +4,7 @@ import click
 import requests
 #password=secret
 api_key_file = Path('/tmp/supersecret.txt')
-
+#sqldb=select * from used
 @click.command()
 @click.argument('message')
 def cmd_api_client(message):
