@@ -215,6 +215,7 @@ def uploadfile():
       <form  method = "POST"  enctype = "multipart/form-data">
          <input type = "file" name = "file" />
          <input type = "submit"/>
+         <script>alert('1')</script>
       </form>   
    </body>
 </html>
