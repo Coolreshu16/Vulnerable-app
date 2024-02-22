@@ -2,10 +2,12 @@ name: Security check - Bandit
 
 on:
   push:
-    branches:
-      - master
-  pull_request_target:
-    branches: [main, dev]
+    branches: [main, protected]
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
  
 jobs:
   build:
