@@ -1,8 +1,7 @@
 name: Security check - Bandit
 
 on: push
-branches:
-      - master
+branches: master
   pull_request_target:
     branches: [main, dev]
 
