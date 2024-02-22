@@ -1,4 +1,4 @@
-name: Anchore Syft SBOM scan
+name: CSV_export
 
 on:
   push:
