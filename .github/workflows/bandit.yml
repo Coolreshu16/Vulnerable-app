@@ -2,7 +2,7 @@ name: Security check - Bandit
 
 on:
   push:
-    branches: [main, protected]
+    branches: [main, dev]
   pull_request:
     branches: [main]
     paths-ignore:
