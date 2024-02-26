@@ -4,7 +4,7 @@
   uses: ambilykk/dependabot-alert-export@v1.0
   with:
     # GitHub token
-    GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
+    GITHUB_TOKEN: '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'
     # Organization name
     org_name: 'coolreshu16'
     # Repository name
