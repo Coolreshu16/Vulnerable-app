@@ -55,8 +55,10 @@ def hello_ssti():
 def get_users():
     try:
         hostname = request.args.get('hostname')
-        command = "dig " + hostname
-        data = subprocess.check_output(command, shell=True)
+        if not re.match(r'^[a-zA-Z0-9.-]+$', hostname):
+            return jsonify(data="Invalid hostname"), 400
+        command = ["dig", hostname]
+        data = subprocess.check_output(command)
         return data
     except:
         data = str(hostname) + " username didn't found"
