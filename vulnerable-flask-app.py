@@ -118,6 +118,10 @@ def run_file():
         filename = request.args.get("filename")
         if not re.match(r'^[\w\-]+$', filename):
             return jsonify(data="Invalid filename"), 400
+        # Allowlist of acceptable filenames
+        allowlist = ["script1.sh", "script2.sh", "script3.sh"]
+        if filename not in allowlist:
+            return jsonify(data="Filename not allowed"), 400
         command = ["/bin/bash", filename]
         data = subprocess.check_output(command)
         return data
