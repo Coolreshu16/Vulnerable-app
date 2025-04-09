@@ -1,4 +1,5 @@
 from flask import Flask,jsonify,render_template_string,request,Response,render_template
+import re
 import subprocess
 from werkzeug.datastructures import Headers
 from werkzeug.utils import secure_filename
@@ -114,9 +115,11 @@ def get_admin_mail(control):
 @app.route("/run_file")
 def run_file():
     try:
-        filename=request.args.get("filename")
-        command="/bin/bash "+filename
-        data=subprocess.check_output(command,shell=True)
+        filename = request.args.get("filename")
+        if not re.match(r'^[\w\-]+$', filename):
+            return jsonify(data="Invalid filename"), 400
+        command = ["/bin/bash", filename]
+        data = subprocess.check_output(command)
         return data
     except:
         return jsonify(data="File failed to run"), 200
