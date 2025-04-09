@@ -58,7 +58,7 @@ def get_users():
         if not re.match(r'^[a-zA-Z0-9.-]+$', hostname):
             return jsonify(data="Invalid hostname"), 400
         command = ["dig", hostname]
-        data = subprocess.check_output(command)
+        data = subprocess.check_output(command, text=True)
         return data
     except:
         data = str(hostname) + " username didn't found"
