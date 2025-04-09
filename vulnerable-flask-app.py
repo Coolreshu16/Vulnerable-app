@@ -201,7 +201,8 @@ def user_pass_control():
     import re
     username=request.form.get("username")
     password=request.form.get("password")
-    if re.search(username,password):
+    safe_username = re.escape(username)
+    if re.search(safe_username, password):
         return jsonify(data="Password include username"), 200
     else:
         return jsonify(data="Password doesn't include username"), 200
